@@ -29,10 +29,10 @@ Department of Computer Science, University of Toronto, Canada
 | Propose a coordinated observation | Email the team leads, well ahead of the relevant Remote Sensing Window |
 | Ask about the ISSI team | [Team page at ISSI Bern](https://teams.issibern.ch/solarflare/) |
 
-## Coordinating an observation with us
+## Coordinating an observation with the Major Flare SOOPs
 
 If you run an observatory or instrument and would like to coordinate with
-a future Major Flare Campaign window, please get in touch **early**.
+a future Major Flare Campaign window, please get in touch early.
 Solar Orbiter observing plans are committed well in advance of the
 Remote Sensing Windows, and campaign targets are typically fixed around
 48 hours ahead of each instance.
