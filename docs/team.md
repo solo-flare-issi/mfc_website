@@ -98,7 +98,7 @@ published. See [Publications](publications.md).
 
 ## Acknowledgements
 
-This work is supported by **ISSI** (International Space Science
+This work is supported by ISSI (International Space Science
 Institute, Bern) through International Team #25-641.
 
 Solar Orbiter is a space mission of international collaboration between
