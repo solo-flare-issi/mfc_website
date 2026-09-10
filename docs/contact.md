@@ -5,21 +5,18 @@
 Questions about the campaigns or this catalogue are best directed to the ISSI team leads.
 
 :::{card}
-**Dr Laura Hayes**: *Team lead, catalogue design, campaign coordinator*
+**Dr Laura Hayes**: *Team lead*
 ^^^
 Dublin Institute for Advanced Studies (DIAS), Ireland
 
-Email: `[institutional address to add]`
-· [ORCID](https://orcid.org/)
+Email: laura.hayes [at] dias.ie
 · [GitHub @hayesla](https://github.com/hayesla)
 :::
 
 :::{card}
-**Dr Hannah Collier**: *Team co-lead, STIX operations*
+**Dr Hannah Collier**: *Team co-lead*
 ^^^
-FHNW / ETH Zürich, Switzerland
-
-Email: `[institutional address to add]`
+Department of Computer Science, University of Toronto, Canada
 :::
 
 ## What to contact us about

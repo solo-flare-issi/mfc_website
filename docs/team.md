@@ -8,10 +8,10 @@ with the EUI, SPICE, STIX and PHI instrument teams. Every campaign
 instance is planned, scheduled and executed through that route, and the
 programme has been running since 2023.
 
-The SOOP has been coordinated to date by **David Berghmans, Hannah
-Collier, Laura Hayes, Andrew Inglis, Graham Kerr, Therese Kucera, Säm
-Krucker** and **Daniel Ryan**, with the campaign coordinators for each
-season listed [below](#campaign-coordinators-by-season).
+The SOOP has been coordinated to date by David Berghmans, Hannah Collier,
+Laura Hayes, Andrew Inglis, Graham Kerr, Therese Kucera, Säm Krucker and
+Daniel Ryan, with the campaign coordinators for each season listed
+[below](#campaign-coordinators-by-season).
 
 ## This website
 
@@ -21,7 +21,8 @@ Orbiter's Solar Flare Campaigns"*, which set out to bring together
 everything the campaigns have produced and make it usable by the wider
 community.
 
-The team is led by Laura Hayes (DIAS) and Hannah Collier (FHNW).
+The team is led by **Laura Hayes** (DIAS) and **Hannah Collier**
+(University of Toronto).
 Its aim is to unleash the full potential of the Major Flare Campaigns by
 cataloguing all observed events, and using high-cadence EUV observations
 to resolve and study the small, fast-evolving sites of flare energy
@@ -38,8 +39,8 @@ Full membership is listed on the
 
 | Member | Affiliation |
 | --- | --- |
-| Laura Hayes | Dublin Institute for Advanced Studies (DIAS), Ireland |
-| Hannah Collier | University of Applied Sciences and Arts Northwestern Switzerland (FHNW), Switzerland |
+| **Laura Hayes** | Dublin Institute for Advanced Studies (DIAS), Ireland |
+| **Hannah Collier** | Department of Computer Science, University of Toronto, Canada |
 
 ### Core team
 

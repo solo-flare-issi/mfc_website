@@ -147,7 +147,7 @@ catalogue is finalised. The narrative pages are live.
 
 Maintained by **ISSI International Team #25-641**, *"Maximising Science
 from Solar Orbiter's Solar Flare Campaigns"*, led by
-**Laura Hayes** (DIAS) and **Hannah Collier** (FHNW/ETH).
+**Laura Hayes** (DIAS) and **Hannah Collier** (University of Toronto).
 
 Questions, corrections or an observation to coordinate?
 See [Contact](contact.md).
