@@ -86,8 +86,8 @@ SOOP, and SPICE ran in raster mode rather than flare sit-and-stare.
 A single instance (RSW 17), with HRI running 18:00-22:00 inside a wider
 SPICE and STIX window. Several flares were caught by
 EUI/HRI<sub>EUV</sub> and STIX, and others by STIX and SPICE, but not yet
-any single event with all three instruments together. It captured an **M2.1 with a strong non-thermal
-X-ray component**, two main X-ray footpoints and EUV substructure, the
+any single event with all three instruments together. It captured an M2.1 with a strong non-thermal
+X-ray component, two main X-ray footpoints and EUV substructure, the
 headline event of the season. Coordination included IRIS (5 sequences),
 Hinode SOT/EIS/XRT, and BBSO Hα.
 
@@ -137,7 +137,7 @@ IRIS transient was noted after 22:00 on 2025-09-13. The 2025-10-02 and
 2025-10-03 instances had pointing errors: the target active region
 was observed, but elsewhere by IRIS and Hinode.
 
-**Headline event.** 2025-10-06 captured a C5.1 coronal event towards the
+Interesting event: 2025-10-06 captured a C5.1 coronal event towards the
 limb in HRIEUV, with IRIS, SOT, XRT and EIS coverage.
 
 ## Winter 2026 (LTP22)
