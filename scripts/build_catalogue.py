@@ -454,7 +454,7 @@ def write_campaign_page(c: Campaign) -> None:
         "**Cite this page**", "",
         "```text",
         f"Hayes, L. et al. (2026). Solar Orbiter Major Flare Campaigns: campaign {c.uid}.",
-        f"https://solo-flare-issi.github.io/mfc-website/campaigns/{c.uid}.html",
+        f"https://solo-flare-issi.github.io/mfc_website/campaigns/{c.uid}.html",
         "```", "",
     ]
     (DOCS / "campaigns" / f"{c.uid}.md").write_text("\n".join(L))
@@ -485,7 +485,7 @@ def write_flare_page(f: Flare, c: Campaign) -> None:
           "None recorded yet. See [Contribute](../contribute.md) to add one.", "",
           "---", "", "**Cite this page**", "", "```text",
           f"Hayes, L. et al. (2026). Solar Orbiter Major Flare Campaigns: flare {f.flare_id}.",
-          f"https://solo-flare-issi.github.io/mfc-website/flares/{f.flare_id}.html",
+          f"https://solo-flare-issi.github.io/mfc_website/flares/{f.flare_id}.html",
           "```", ""]
     (DOCS / "flares" / f"{f.flare_id}.md").write_text("\n".join(L))
 

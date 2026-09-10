@@ -43,6 +43,7 @@ html_css_files = ["custom.css"]
 html_js_files = ["catalogue.js"]
 html_title = "Solar Orbiter Major Flare Campaigns"
 html_show_sourcelink = False
+html_baseurl = "https://solo-flare-issi.github.io/mfc_website/"
 
 html_theme_options = {
     # No icon links in the navbar: they crowded the nav.  GitHub is reachable
@@ -79,7 +80,7 @@ html_sidebars = {"**": []}
 
 html_context = {
     "github_user": "solo-flare-issi",
-    "github_repo": "mfc-website",
+    "github_repo": "mfc_website",
     "github_version": "main",
     "doc_path": "docs",
     "default_mode": "light",

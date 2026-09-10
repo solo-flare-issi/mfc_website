@@ -4,7 +4,7 @@ This site is maintained on GitHub and community contributions are
 welcome. Everything here is version-controlled, so corrections are easy
 to make and easy to review.
 
-Repository: [github.com/solo-flare-issi/mfc-website](https://github.com/solo-flare-issi/mfc-website)
+Repository: [github.com/solo-flare-issi/mfc_website](https://github.com/solo-flare-issi/mfc_website)
 
 ## Flag a correction
 
@@ -52,4 +52,4 @@ overwritten on the next build.
 ## Licence
 
 This site, the catalogue data and the code that builds them are released
-under the [BSD 3-Clause License](https://github.com/solo-flare-issi/mfc-website/blob/main/LICENSE).
+under the [BSD 3-Clause License](https://github.com/solo-flare-issi/mfc_website/blob/main/LICENSE).

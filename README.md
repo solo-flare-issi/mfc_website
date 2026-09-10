@@ -1,11 +1,15 @@
-# mfc-website
+# mfc_website
 
 Public website for the **Solar Orbiter Major Flare Campaigns**, maintained
 by ISSI International Team #25-641, *"Maximising Science from Solar
 Orbiter's Solar Flare Campaigns"*.
 
-Built with [MkDocs](https://www.mkdocs.org/) and the
-[Material](https://squidfunk.github.io/mkdocs-material/) theme.
+Built with [Sphinx](https://www.sphinx-doc.org/), the
+[PyData Sphinx Theme](https://pydata-sphinx-theme.readthedocs.io/) and
+[MyST](https://myst-parser.readthedocs.io/) (pages are written in
+Markdown).
+
+Live site: <https://solo-flare-issi.github.io/mfc_website/>
 
 ## Local development
 
@@ -62,4 +66,6 @@ command.
 
 ## Licence
 
-Content and catalogue data: CC-BY-4.0. Code: MIT.
+BSD 3-Clause. See [LICENSE](LICENSE).
+
+Copyright (c) 2026, Solar Orbiter Major Flare ISSI Team.

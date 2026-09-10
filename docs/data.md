@@ -32,7 +32,7 @@ visibility, spacecraft distance, and the campaign it belongs to.
 ```python
 import pandas as pd
 
-base = "https://solo-flare-issi.github.io/mfc-website/"
+base = "https://solo-flare-issi.github.io/mfc_website/"
 campaigns = pd.read_csv(base + "campaigns.csv")
 flares = pd.read_csv(base + "flares.csv")
 
@@ -97,7 +97,7 @@ analysis:
 ## Licence and citation
 
 The catalogue is released under the
-[BSD 3-Clause License](https://github.com/solo-flare-issi/mfc-website/blob/main/LICENSE).
+[BSD 3-Clause License](https://github.com/solo-flare-issi/mfc_website/blob/main/LICENSE).
 You are free to use and redistribute it, including commercially, provided
 the copyright notice and disclaimer are retained. A Zenodo deposit with a
 citable DOI is planned to accompany the campaign paper.

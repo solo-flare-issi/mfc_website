@@ -26,8 +26,8 @@ Email: `[institutional address to add]`
 
 | You want to… | Best route |
 | --- | --- |
-| Report an error in the catalogue | [Open a GitHub issue](https://github.com/solo-flare-issi/mfc-website/issues) |
-| Add a paper to the publications list | [Pull request or issue](https://github.com/solo-flare-issi/mfc-website/issues), see [Contribute](contribute.md) |
+| Report an error in the catalogue | [Open a GitHub issue](https://github.com/solo-flare-issi/mfc_website/issues) |
+| Add a paper to the publications list | [Pull request or issue](https://github.com/solo-flare-issi/mfc_website/issues), see [Contribute](contribute.md) |
 | Ask about data access for a campaign | Email the team leads |
 | Propose a coordinated observation | Email the team leads, well ahead of the relevant Remote Sensing Window |
 | Ask about the ISSI team | [Team page at ISSI Bern](https://teams.issibern.ch/solarflare/) |
