@@ -138,9 +138,11 @@ of those campaigns:
 - **Tracking the science.** The papers that come out of these
   campaigns, linked to the events they use.
 
-:::{note}
-The campaign and flare catalogues are placeholders while the underlying
-catalogue is finalised. The narrative pages are live.
+:::{note} Work in progress
+The catalogues here are a first pass and are still being cleaned and
+checked, so expect details to change. More flare information is coming,
+along with links to movies, quicklook plots and timeseries for each
+campaign. Corrections are welcome, see [Contribute](contribute.md).
 :::
 
 ---
