@@ -1,0 +1,389 @@
+/* ===================================================================
+   Solar Orbiter Major Flare Programme
+   Theme layer over pydata-sphinx-theme.
+
+   Palette: a solar scheme — deep chromospheric orange as the primary,
+   a warm amber accent, on a near-neutral warm grey ground.
+   =================================================================== */
+
+/* ---- Light mode palette ---- */
+html[data-theme="light"] {
+  --pst-color-primary: #c1440e;          /* deep solar orange */
+  --pst-color-primary-highlight: #96340b;
+  --pst-color-secondary: #e07a1f;        /* amber accent */
+  --pst-color-secondary-highlight: #b85f13;
+  --pst-color-link: #b03d0c;
+  --pst-color-link-hover: #e07a1f;
+  --pst-color-inline-code: #8a3208;
+  --pst-color-background: #ffffff;
+  --pst-color-on-background: #fdfaf7;    /* warm off-white for navbar/cards */
+  --pst-color-surface: #f6f1ec;
+  --pst-color-border: #e4dcd4;
+  --pst-color-accent: #e07a1f;
+}
+
+/* ---- Dark mode palette ---- */
+html[data-theme="dark"] {
+  --pst-color-primary: #ff8c42;          /* bright corona orange */
+  --pst-color-primary-highlight: #ffa866;
+  --pst-color-secondary: #ffc46b;
+  --pst-color-secondary-highlight: #ffd699;
+  --pst-color-link: #ff9d5c;
+  --pst-color-link-hover: #ffc46b;
+  --pst-color-inline-code: #ffb380;
+  --pst-color-background: #14161a;       /* deep space */
+  --pst-color-on-background: #1c1f25;
+  --pst-color-surface: #232730;
+  --pst-color-border: #333844;
+  --pst-color-accent: #ffc46b;
+}
+
+/* ===================================================================
+   Header — give the navbar room to breathe
+   =================================================================== */
+
+.bd-header {
+  box-shadow: 0 1px 0 var(--pst-color-border);
+}
+.bd-header .navbar-header-items {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  column-gap: .75rem;
+  flex-wrap: nowrap;          /* keep brand, nav and controls on one row */
+}
+.bd-header .navbar-header-items__center {
+  min-width: 0;               /* allow the nav to shrink instead of wrapping */
+}
+.bd-header .navbar-header-items__end {
+  margin-left: auto;
+  flex: 0 0 auto;
+  gap: .15rem;
+}
+.bd-header .bd-header__inner { align-items: center; }
+.bd-header .navbar-brand {
+  padding: .35rem 0;
+  line-height: 1.2;
+  gap: .5rem;
+}
+/* Mission logo beside the site title */
+.bd-header .navbar-brand img.logo__image {
+  height: 2.1rem;
+  width: auto;
+}
+/* Site title: compact single line, with a Solar Orbiter eyebrow above */
+.bd-header .navbar-brand .title {
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: nowrap;
+  line-height: 1.15;
+  color: var(--pst-color-primary);
+}
+.bd-header .navbar-brand .title::before {
+  content: "SOLAR ORBITER";
+  display: block;
+  font-size: .58rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  color: var(--pst-color-text-muted);
+  margin-bottom: .1rem;
+}
+
+/* Nav links: every section visible on one row, scrolling if the window is
+   too narrow to fit them all. */
+.bd-header .navbar-nav {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.bd-header .navbar-nav::-webkit-scrollbar { display: none; }
+.bd-header .navbar-nav > li.nav-item {
+  margin: 0 .05rem;
+}
+.bd-header .navbar-nav li a.nav-link {
+  padding: .4rem .45rem;
+  font-size: .83rem;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+}
+@media (min-width: 1400px) {
+  .bd-header .navbar-nav li a.nav-link {
+    padding: .45rem .6rem;
+    font-size: .875rem;
+  }
+}
+@media (max-width: 1200px) {
+  .bd-header .navbar-nav li a.nav-link { padding: .4rem .35rem; font-size: .8rem; }
+  .bd-header .navbar-brand .title { font-size: .92rem; }
+  .bd-header .navbar-brand img.logo__image { height: 1.85rem; }
+}
+.bd-header .navbar-nav li a.nav-link:hover {
+  border-bottom-color: var(--pst-color-secondary);
+}
+.bd-header .navbar-nav > .active > .nav-link {
+  font-weight: 700;
+  border-bottom-color: var(--pst-color-primary);
+}
+/* No icon links in the navbar; reclaim the space they occupied. */
+.navbar-icon-links { display: none; }
+.bd-header .navbar-header-items__end { flex-shrink: 0; }
+
+/* Compact search button in the navbar (opens the Ctrl+K modal) */
+.bd-header button.search-button__button {
+  padding: .3rem .45rem;
+  color: var(--pst-color-text-muted);
+  border-radius: .3rem;
+}
+.bd-header button.search-button__button:hover {
+  color: var(--pst-color-primary);
+  background: var(--pst-color-surface);
+}
+.search-button__search-container input {
+  border-radius: .3rem;
+  border: 1px solid var(--pst-color-border);
+}
+
+/* ===================================================================
+   Landing page
+   =================================================================== */
+
+/* Hero title */
+.bd-main h1 {
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+/* Section cards */
+.sd-card {
+  border-radius: .4rem;
+  border-color: var(--pst-color-border);
+  background-color: var(--pst-color-on-background);
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+.sd-card:hover {
+  border-color: var(--pst-color-primary);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .10);
+  transform: translateY(-2px);
+}
+.sd-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--pst-color-primary);
+}
+.sd-card-body p {
+  font-size: .85rem;
+  line-height: 1.5;
+  color: var(--pst-color-text-muted);
+}
+
+/* Headline-event cards */
+.mfc-event .sd-card-body { padding-top: .75rem; }
+img.mfc-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: .25rem;
+  margin-bottom: .6rem;
+  background: var(--pst-color-surface);
+}
+
+/* ===================================================================
+   Catalogue tables
+   =================================================================== */
+
+table.docutils, div.table-wrapper > table { font-size: .84rem; }
+table.docutils th {
+  font-weight: 700;
+  background: var(--pst-color-surface);
+}
+table.docutils tbody tr:hover { background: var(--pst-color-surface); }
+div.table-wrapper { overflow-x: auto; }
+table td:first-child { white-space: nowrap; }
+
+/* Status badges */
+.sd-badge { font-weight: 700; letter-spacing: .02em; }
+
+/* ===================================================================
+   Footer
+   =================================================================== */
+
+.mfc-footer-contact {
+  margin: 0;
+  font-size: .82rem;
+  color: var(--pst-color-text-muted);
+}
+.mfc-footer-contact a { text-decoration: none; }
+.mfc-footer-contact a:hover { text-decoration: underline; }
+
+/* Contact card on the contact page */
+.mfc-contact-card {
+  border-left: 3px solid var(--pst-color-primary);
+  background: var(--pst-color-surface);
+  padding: 1rem 1.2rem;
+  border-radius: .3rem;
+  margin: 1rem 0 1.5rem;
+}
+.mfc-contact-card p { margin: .2rem 0; font-size: .9rem; }
+
+/* ===================================================================
+   Interactive catalogue tables
+   =================================================================== */
+
+.mfc-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  align-items: center;
+  margin: 1.25rem 0 .5rem;
+}
+.mfc-toolbar input.mfc-search {
+  flex: 1 1 14rem;
+  min-width: 10rem;
+  padding: .4rem .6rem;
+  font-size: .85rem;
+  border: 1px solid var(--pst-color-border);
+  border-radius: .3rem;
+  background: var(--pst-color-background);
+  color: var(--pst-color-text-base);
+}
+.mfc-toolbar input.mfc-search:focus,
+.mfc-toolbar select.mfc-filter:focus {
+  outline: none;
+  border-color: var(--pst-color-primary);
+  box-shadow: 0 0 0 2px rgba(193, 68, 14, .15);
+}
+.mfc-toolbar select.mfc-filter {
+  padding: .4rem .5rem;
+  font-size: .82rem;
+  border: 1px solid var(--pst-color-border);
+  border-radius: .3rem;
+  background: var(--pst-color-background);
+  color: var(--pst-color-text-base);
+}
+.mfc-toolbar button.mfc-reset {
+  padding: .4rem .75rem;
+  font-size: .82rem;
+  border: 1px solid var(--pst-color-border);
+  border-radius: .3rem;
+  background: var(--pst-color-surface);
+  color: var(--pst-color-text-muted);
+  cursor: pointer;
+}
+.mfc-toolbar button.mfc-reset:hover {
+  border-color: var(--pst-color-primary);
+  color: var(--pst-color-primary);
+}
+.mfc-count, .mfc-empty {
+  font-size: .8rem;
+  color: var(--pst-color-text-muted);
+  margin: 0 0 .5rem;
+}
+
+/* Catalogue tables break out of the prose column to use the full window,
+   while body text keeps a readable measure. */
+.mfc-table-wrapper { width: 100%; }
+.mfc-scroll { overflow-x: auto; }
+table.mfc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .84rem;
+  margin: 0 0 1rem;
+}
+table.mfc-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--pst-color-surface);
+  text-align: left;
+  font-weight: 700;
+  padding: .55rem .6rem;
+  border-bottom: 2px solid var(--pst-color-border);
+  white-space: nowrap;
+}
+table.mfc-table thead th.sortable { cursor: pointer; user-select: none; }
+table.mfc-table thead th.sortable::after {
+  content: "\2195";
+  opacity: .3;
+  margin-left: .35rem;
+  font-size: .8em;
+}
+table.mfc-table thead th[aria-sort="ascending"]::after  { content: "\2191"; opacity: 1; }
+table.mfc-table thead th[aria-sort="descending"]::after { content: "\2193"; opacity: 1; }
+table.mfc-table thead th.sortable:hover { color: var(--pst-color-primary); }
+table.mfc-table td {
+  padding: .45rem .6rem;
+  border-bottom: 1px solid var(--pst-color-border);
+  vertical-align: top;
+  white-space: nowrap;
+}
+/* The last two columns carry lists, so let those wrap. */
+table.mfc-table td:nth-last-child(-n + 2) { white-space: normal; }
+table.mfc-table td:first-child { white-space: nowrap; font-weight: 600; }
+table.mfc-table tbody tr:hover { background: var(--pst-color-surface); }
+
+/* Campaign type tags */
+.mfc-tag {
+  display: inline-block;
+  padding: .1rem .45rem;
+  border-radius: 1rem;
+  font-size: .72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.mfc-tag-soop    { background: rgba(193, 68, 14, .12);  color: var(--pst-color-primary); }
+.mfc-tag-trigger { background: rgba(45, 106, 143, .12); color: #2d6a8f; }
+html[data-theme="dark"] .mfc-tag-trigger { color: #7db6d8; }
+
+/* GOES class chips */
+.mfc-goes { font-weight: 700; white-space: nowrap; }
+.mfc-goes-x { color: #b3200e; }
+.mfc-goes-m { color: #c1440e; }
+.mfc-goes-c { color: #a8791c; }
+.mfc-goes-b { color: var(--pst-color-text-muted); }
+html[data-theme="dark"] .mfc-goes-x { color: #ff6b52; }
+html[data-theme="dark"] .mfc-goes-m { color: #ff8c42; }
+html[data-theme="dark"] .mfc-goes-c { color: #e0b050; }
+
+/* Summary statistic cards */
+.mfc-stat { text-align: center; }
+.mfc-stat .sd-card-title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--pst-color-primary);
+  margin-bottom: 0;
+}
+.mfc-stat .sd-card-body p {
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin: 0;
+}
+
+/* Footer link row */
+.mfc-footer-links {
+  margin: .3rem 0 0;
+  font-size: .8rem;
+}
+.mfc-footer-links a {
+  margin: 0 .5rem;
+  text-decoration: none;
+  color: var(--pst-color-text-muted);
+}
+.mfc-footer-links a:first-child { margin-left: 0; }
+.mfc-footer-links a:hover {
+  color: var(--pst-color-primary);
+  text-decoration: underline;
+}
+
+/* Catalogue and landing pages have no sidebars, so let the article use the
+   width those sidebars would have taken. */
+.bd-main .bd-content .bd-article-container:has(.mfc-table-wrapper),
+.bd-main .bd-content .bd-article-container:has(.mfc-stat) {
+  max-width: 100%;
+}
+
+/* Footer spacing */
+.bd-footer .bd-footer__inner {
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+  row-gap: .4rem;
+}

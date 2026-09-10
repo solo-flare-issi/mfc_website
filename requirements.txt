@@ -1,0 +1,11 @@
+# Solar Orbiter Major Flare Programme website
+# Minimum versions — not exact pins.
+sphinx>=8.1
+pydata-sphinx-theme>=0.16
+myst-parser>=4.0
+linkify-it-py>=2.0   # enables MyST "linkify" (bare URLs become links)
+sphinx-design>=0.6
+sphinx-copybutton>=0.5
+
+# Catalogue build (scripts/build_catalogue.py)
+openpyxl>=3.1
