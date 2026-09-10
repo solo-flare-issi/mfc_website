@@ -51,4 +51,5 @@ overwritten on the next build.
 
 ## Licence
 
-Site content and catalogue data: **CC-BY-4.0**. Code: **MIT**.
+This site, the catalogue data and the code that builds them are released
+under the [BSD 3-Clause License](https://github.com/solo-flare-issi/mfc-website/blob/main/LICENSE).

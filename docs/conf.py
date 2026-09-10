@@ -6,7 +6,7 @@ from datetime import datetime
 
 project = "Solar Orbiter Major Flare Campaigns"
 author = "ISSI International Team #25-641"
-copyright = f"{datetime.now():%Y}. Site content and catalogue data CC BY 4.0"
+copyright = f"{datetime.now():%Y}. Released under the BSD 3-Clause License"
 
 # -- General configuration ---------------------------------------------------
 

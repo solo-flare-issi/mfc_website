@@ -50,7 +50,7 @@ The searchable catalogue of observing windows, and of the flares
 observed in them.
 :::
 
-:::{grid-item-card} {octicon}`file-text;1.5em;sd-mr-1` Publications
+:::{grid-item-card} {octicon}`mortar-board;1.5em;sd-mr-1` Publications
 :link: publications
 :link-type: doc
 

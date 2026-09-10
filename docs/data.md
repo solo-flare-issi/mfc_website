@@ -96,8 +96,13 @@ analysis:
 
 ## Licence and citation
 
-Catalogue data is released under **CC BY 4.0**. A Zenodo deposit with a
+The catalogue is released under the
+[BSD 3-Clause License](https://github.com/solo-flare-issi/mfc-website/blob/main/LICENSE).
+You are free to use and redistribute it, including commercially, provided
+the copyright notice and disclaimer are retained. A Zenodo deposit with a
 citable DOI is planned to accompany the campaign paper.
+
+If you use the catalogue, please cite it:
 
 ```text
 Hayes, L. et al. (2026). Solar Orbiter Major Flare Campaigns
