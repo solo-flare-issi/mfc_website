@@ -72,8 +72,8 @@ Four events that anchor the scientific record of the campaigns.
 :link-type: doc
 :class-card: mfc-event
 
-```{image} _static/placeholder-thumb.svg
-:alt: Placeholder thumbnail
+```{image} _static/thumb-20241015.jpg
+:alt: EUI/HRI-EUV image of the 2024-10-15 flare
 :class: mfc-thumb
 ```
 
@@ -85,8 +85,8 @@ Strong non-thermal X-ray component, two footpoints, EUV substructure.
 :link-type: doc
 :class-card: mfc-event
 
-```{image} _static/placeholder-thumb.svg
-:alt: Placeholder thumbnail
+```{image} _static/thumb-20240319.jpg
+:alt: EUI/HRI-EUV image of the 2024-03-19 flare
 :class: mfc-thumb
 ```
 
@@ -138,7 +138,8 @@ of those campaigns:
 - **Tracking the science.** The papers that come out of these
   campaigns, linked to the events they use.
 
-:::{note} Work in progress
+:::{admonition} Work in progress
+:class: note
 The catalogues here are a first pass and are still being cleaned and
 checked, so expect details to change. More flare information is coming,
 along with links to movies, quicklook plots and timeseries for each

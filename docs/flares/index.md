@@ -6,39 +6,48 @@ html_theme.sidebar_secondary.remove: true
 
 # Flare catalogue
 
-Every flare recorded within a Solar Orbiter Major Flare Campaign window since 2023. Classes for far-side events are estimated from STIX. Column headings sort the table.
+Every flare recorded in a Solar Orbiter Major Flare Campaigns window since 2023 (47 flares), plus 3 large flares caught at high cadence under other SOOPs. Classes for far-side events are estimated from STIX. Column headings sort the table.
+
+**Instrument data** gives the instruments that were taking data at the flare time, from the SOAR-verified campaign windows. Every MFC-SOOP window runs EUI, SPICE and PHI together, so flares in those windows have all three unless an instrument stopped early. The trigger windows are EUI alone, with SPICE on some. **Clearly seen in** is the observer's note of where the flare is evident.
 
 ::::{grid} 2 4 4 4
 :gutter: 2
 
-:::{grid-item-card} 44
+:::{grid-item-card} 50
 :class-card: mfc-stat
 
 flares recorded
 :::
 
-:::{grid-item-card} 10
+:::{grid-item-card} 16
 :class-card: mfc-stat
 
-M-class
+M- and X-class
+:::
+
+:::{grid-item-card} 28
+:class-card: mfc-stat
+
+with PHI data
+:::
+
+:::{grid-item-card} 32
+:class-card: mfc-stat
+
+with SPICE data
 :::
 
 :::{grid-item-card} 25
 :class-card: mfc-stat
 
-C-class
-:::
-
-:::{grid-item-card} 8
-:class-card: mfc-stat
-
-B-class
+with EUI, SPICE and PHI
 :::
 
 ::::
 
-:::{warning} Not yet included
-The four flares captured by the PHI trigger campaigns (2024-12-08 X2.3, 2026-02-03 X1.5, 2026-02-04 X4.2 and 2026-02-06 C2) are described on the [Trigger Campaigns](../trigger-campaigns.md) page but have not yet been entered in the working spreadsheet, so they are absent from the table below.
+:::{admonition} Not yet included
+:class: warning
+The flares captured by the PHI trigger campaigns (2026-02-03 X1.5, 2026-02-04 X4.2 and 2026-02-06 C2) are described on the [Trigger Campaigns](../trigger-campaigns.md) page but have not yet been entered in the working spreadsheet, so they are absent from the table below.
 :::
 
 <div class="mfc-table-wrapper">
@@ -50,7 +59,19 @@ The four flares captured by the PHI trigger campaigns (2024-12-08 X2.3, 2026-02-
 <option value="C">C</option>
 <option value="B">B</option>
 </select>
-<select class="mfc-filter" data-column="4" aria-label="Seen from Earth">
+<select class="mfc-filter" data-column="3" aria-label="Instrument data">
+<option value="">Instrument data: all</option>
+<option value="EUI">EUI</option>
+<option value="SPICE">SPICE</option>
+<option value="PHI">PHI</option>
+</select>
+<select class="mfc-filter" data-column="8" aria-label="Type">
+<option value="">Type: all</option>
+<option value="MFC-SOOP">MFC-SOOP</option>
+<option value="Trigger">Trigger</option>
+<option value="Outside windows">Outside windows</option>
+</select>
+<select class="mfc-filter" data-column="5" aria-label="Seen from Earth">
 <option value="">Seen from Earth: all</option>
 <option value="Yes">Yes</option>
 <option value="No">No</option>
@@ -62,55 +83,63 @@ The four flares captured by the PHI trigger campaigns (2024-12-08 X2.3, 2026-02-
 <th>Peak time (UT)</th>
 <th>GOES class</th>
 <th>Class</th>
-<th>Observed by</th>
+<th>Instrument data</th>
+<th>Clearly seen in</th>
 <th>Seen from Earth</th>
 <th data-numeric="true">SO distance (AU)</th>
 <th>Campaign</th>
+<th>Type</th>
 </tr></thead><tbody>
-<tr><td><a href="2024-03-19T23-30.html">2024-03-19 23:30</a></td><td><span class="mfc-goes mfc-goes-m">M2.2</span></td><td>M</td><td>EUI, SPICE</td><td>Yes</td><td>0.44</td><td><a href="../campaigns/MFW20240319A.html">MFW20240319A</a></td></tr>
-<tr><td><a href="2024-03-23T22-44.html">2024-03-23 22:44</a></td><td><span class="mfc-goes mfc-goes-c">C5.9</span></td><td>C</td><td>EUI</td><td>Yes</td><td>0.38</td><td><a href="../campaigns/MFW20240323A.html">MFW20240323A</a></td></tr>
-<tr><td><a href="2024-03-23T22-54.html">2024-03-23 22:54</a></td><td><span class="mfc-goes mfc-goes-c">C7.9</span></td><td>C</td><td>EUI</td><td>Yes</td><td>0.38</td><td><a href="../campaigns/MFW20240323A.html">MFW20240323A</a></td></tr>
-<tr><td><a href="2024-03-23T23-41.html">2024-03-23 23:41</a></td><td><span class="mfc-goes mfc-goes-m">M2.5</span></td><td>M</td><td>EUI, SPICE</td><td>Yes</td><td>0.38</td><td><a href="../campaigns/MFW20240323A.html">MFW20240323A</a></td></tr>
-<tr><td><a href="2024-03-24T00-53.html">2024-03-24 00:53</a></td><td><span class="mfc-goes mfc-goes-c">C9.9</span></td><td>C</td><td>EUI</td><td>Yes</td><td>0.38</td><td><a href="../campaigns/MFW20240323A.html">MFW20240323A</a></td></tr>
-<tr><td><a href="2024-03-24T01-48.html">2024-03-24 01:48</a></td><td><span class="mfc-goes mfc-goes-m">M2.2</span></td><td>M</td><td>EUI, SPICE</td><td>Yes</td><td>0.38</td><td><a href="../campaigns/MFW20240323A.html">MFW20240323A</a></td></tr>
-<tr><td><a href="2024-03-24T02-09.html">2024-03-24 02:09</a></td><td><span class="mfc-goes mfc-goes-m">M2.7</span></td><td>M</td><td>EUI</td><td>Yes</td><td>0.38</td><td><a href="../campaigns/MFW20240323A.html">MFW20240323A</a></td></tr>
-<tr><td><a href="2024-04-02T20-55.html">2024-04-02 20:55</a></td><td><span class="mfc-goes mfc-goes-b">B5</span></td><td>B</td><td>EUI</td><td>No</td><td>0.29</td><td><a href="../campaigns/MFW20240402A.html">MFW20240402A</a></td></tr>
-<tr><td><a href="2024-04-02T20-59.html">2024-04-02 20:59</a></td><td><span class="mfc-goes mfc-goes-b">B3</span></td><td>B</td><td>EUI</td><td>No</td><td>0.29</td><td><a href="../campaigns/MFW20240402A.html">MFW20240402A</a></td></tr>
-<tr><td><a href="2024-04-02T21-32.html">2024-04-02 21:32</a></td><td><span class="mfc-goes mfc-goes-b">B6</span></td><td>B</td><td>EUI</td><td>No</td><td>0.29</td><td><a href="../campaigns/MFW20240402A.html">MFW20240402A</a></td></tr>
-<tr><td><a href="2024-04-03T21-52.html">2024-04-03 21:52</a></td><td><span class="mfc-goes mfc-goes-b">B3.3</span></td><td>B</td><td>EUI</td><td></td><td>0.29</td><td><a href="../campaigns/MFW20240403A.html">MFW20240403A</a></td></tr>
-<tr><td><a href="2024-04-04T20-05.html">2024-04-04 20:05</a></td><td><span class="mfc-goes mfc-goes-c">C2.5</span></td><td>C</td><td>EUI</td><td>No</td><td>0.29</td><td><a href="../campaigns/MFW20240404A.html">MFW20240404A</a></td></tr>
-<tr><td><a href="2024-04-04T20-12.html">2024-04-04 20:12</a></td><td><span class="mfc-goes mfc-goes-c">C5.0</span></td><td>C</td><td>EUI</td><td>No</td><td>0.29</td><td><a href="../campaigns/MFW20240404A.html">MFW20240404A</a></td></tr>
-<tr><td><a href="2024-04-04T21-16.html">2024-04-04 21:16</a></td><td><span class="mfc-goes mfc-goes-c">C1.0</span></td><td>C</td><td>EUI</td><td>No</td><td>0.29</td><td><a href="../campaigns/MFW20240404A.html">MFW20240404A</a></td></tr>
-<tr><td><a href="2024-04-04T21-42.html">2024-04-04 21:42</a></td><td><span class="mfc-goes mfc-goes-c">C3.2</span></td><td>C</td><td>EUI</td><td>No</td><td>0.29</td><td><a href="../campaigns/MFW20240404A.html">MFW20240404A</a></td></tr>
-<tr><td><a href="2024-04-05T20-12.html">2024-04-05 20:12</a></td><td><span class="mfc-goes mfc-goes-c">C9.9</span></td><td>C</td><td>EUI</td><td>No</td><td>0.3</td><td><a href="../campaigns/MFW20240405A.html">MFW20240405A</a></td></tr>
-<tr><td><a href="2024-04-05T21-46.html">2024-04-05 21:46</a></td><td><span class="mfc-goes mfc-goes-c">C1.4</span></td><td>C</td><td>EUI</td><td>No</td><td>0.3</td><td><a href="../campaigns/MFW20240405A.html">MFW20240405A</a></td></tr>
-<tr><td><a href="2024-04-05T22-19.html">2024-04-05 22:19</a></td><td><span class="mfc-goes mfc-goes-c">C1.1</span></td><td>C</td><td>EUI</td><td>No</td><td>0.3</td><td><a href="../campaigns/MFW20240405A.html">MFW20240405A</a></td></tr>
-<tr><td><a href="2024-04-05T23-42.html">2024-04-05 23:42</a></td><td><span class="mfc-goes mfc-goes-b">B5</span></td><td>B</td><td>EUI</td><td>No</td><td>0.3</td><td><a href="../campaigns/MFW20240405A.html">MFW20240405A</a></td></tr>
-<tr><td><a href="2024-10-15T16-25.html">2024-10-15 16:25</a></td><td><span class="mfc-goes mfc-goes-c">C2.0</span></td><td>C</td><td>EUI, SPICE</td><td></td><td>0.43</td><td><a href="../campaigns/MFW20241015A.html">MFW20241015A</a></td></tr>
-<tr><td><a href="2024-10-15T18-30.html">2024-10-15 18:30</a></td><td><span class="mfc-goes mfc-goes-m">M2.0</span></td><td>M</td><td>EUI</td><td></td><td>0.43</td><td><a href="../campaigns/MFW20241015A.html">MFW20241015A</a></td></tr>
-<tr><td><a href="2024-10-15T19-48.html">2024-10-15 19:48</a></td><td><span class="mfc-goes mfc-goes-c">C4</span></td><td>C</td><td>EUI</td><td></td><td>0.43</td><td><a href="../campaigns/MFW20241015A.html">MFW20241015A</a></td></tr>
-<tr><td><a href="2024-10-15T23-15.html">2024-10-15 23:15</a></td><td><span class="mfc-goes mfc-goes-c">C9.0</span></td><td>C</td><td>SPICE</td><td></td><td>0.43</td><td><a href="../campaigns/MFW20241015A.html">MFW20241015A</a></td></tr>
-<tr><td><a href="2024-12-05T00-43.html">2024-12-05 00:43</a></td><td><span class="mfc-goes mfc-goes-c">C2</span></td><td>C</td><td>EUI</td><td></td><td>0.9</td><td><a href="../campaigns/MFT20241205a.html">MFT20241205a</a></td></tr>
-<tr><td><a href="2024-12-07T13-06.html">2024-12-07 13:06</a></td><td><span class="mfc-goes mfc-goes-m">M2.4</span></td><td>M</td><td>EUI</td><td></td><td>0.91</td><td><a href="../campaigns/MFT20241207a.html">MFT20241207a</a></td></tr>
-<tr><td><a href="2024-12-11T02-10.html">2024-12-11 02:10</a></td><td><span class="mfc-goes mfc-goes-c">C3.1</span></td><td>C</td><td>EUI</td><td></td><td>0.92</td><td><a href="../campaigns/MFT20241211a.html">MFT20241211a</a></td></tr>
-<tr><td><a href="2024-12-11T03-26.html">2024-12-11 03:26</a></td><td><span class="mfc-goes mfc-goes-c">C6.9</span></td><td>C</td><td>EUI</td><td></td><td>0.92</td><td><a href="../campaigns/MFT20241211a.html">MFT20241211a</a></td></tr>
-<tr><td><a href="2025-03-14T21-30.html">2025-03-14 21:30</a></td><td><span class="mfc-goes mfc-goes-c">C1.9</span></td><td>C</td><td>EUI, SPICE</td><td></td><td>0.45</td><td><a href="../campaigns/MFW20250314A.html">MFW20250314A</a></td></tr>
-<tr><td><a href="2025-03-30T14-04.html">2025-03-30 14:04</a></td><td><span class="mfc-goes mfc-goes-c">C1.5</span></td><td>C</td><td>EUI</td><td></td><td>0.3</td><td><a href="../campaigns/MFW20250330A.html">MFW20250330A</a></td></tr>
-<tr><td><a href="2025-09-13T19-15.html">2025-09-13 19:15</a></td><td><span class="mfc-goes mfc-goes-u">Unknown</span></td><td>U</td><td>SPICE</td><td></td><td>0.3</td><td><a href="../campaigns/MFW20250913A.html">MFW20250913A</a></td></tr>
-<tr><td><a href="2025-09-17T09-35.html">2025-09-17 09:35</a></td><td><span class="mfc-goes mfc-goes-c">C1.8</span></td><td>C</td><td>EUI</td><td></td><td>0.3</td><td><a href="../campaigns/MFW20250917A.html">MFW20250917A</a></td></tr>
-<tr><td><a href="2025-10-06T20-33.html">2025-10-06 20:33</a></td><td><span class="mfc-goes mfc-goes-c">C5.1</span></td><td>C</td><td>EUI, SPICE</td><td></td><td>0.5</td><td><a href="../campaigns/MFW20251006A.html">MFW20251006A</a></td></tr>
-<tr><td><a href="2025-11-24T10-31.html">2025-11-24 10:31</a></td><td><span class="mfc-goes mfc-goes-b">B9.1</span></td><td>B</td><td>EUI</td><td></td><td>0.88</td><td><a href="../campaigns/MFT20251124a.html">MFT20251124a</a></td></tr>
-<tr><td><a href="2025-11-24T12-29.html">2025-11-24 12:29</a></td><td><span class="mfc-goes mfc-goes-b">B7.8</span></td><td>B</td><td>EUI</td><td></td><td>0.88</td><td><a href="../campaigns/MFT20251124a.html">MFT20251124a</a></td></tr>
-<tr><td><a href="2025-11-26T10-22.html">2025-11-26 10:22</a></td><td><span class="mfc-goes mfc-goes-c">C2</span></td><td>C</td><td>EUI</td><td></td><td>0.88</td><td><a href="../campaigns/MFT20251126a.html">MFT20251126a</a></td></tr>
-<tr><td><a href="2025-11-28T10-12.html">2025-11-28 10:12</a></td><td><span class="mfc-goes mfc-goes-c">C3.6</span></td><td>C</td><td>EUI</td><td></td><td>0.89</td><td><a href="../campaigns/MFT20251128a.html">MFT20251128a</a></td></tr>
-<tr><td><a href="2025-12-10T07-35.html">2025-12-10 07:35</a></td><td><span class="mfc-goes mfc-goes-m">M2.0</span></td><td>M</td><td>EUI</td><td></td><td>0.9</td><td><a href="../campaigns/MFT20251210a.html">MFT20251210a</a></td></tr>
-<tr><td><a href="2025-12-10T09-54.html">2025-12-10 09:54</a></td><td><span class="mfc-goes mfc-goes-m">M1.0</span></td><td>M</td><td>EUI</td><td></td><td>0.9</td><td><a href="../campaigns/MFT20251210a.html">MFT20251210a</a></td></tr>
-<tr><td><a href="2026-01-30T20-26.html">2026-01-30 20:26</a></td><td><span class="mfc-goes mfc-goes-b">B9.7</span></td><td>B</td><td>EUI</td><td></td><td>0.63</td><td><a href="../campaigns/MFT20260130a.html">MFT20260130a</a></td></tr>
-<tr><td><a href="2026-02-04T18-56.html">2026-02-04 18:56</a></td><td><span class="mfc-goes mfc-goes-c">C2.2</span></td><td>C</td><td>EUI</td><td></td><td>0.58</td><td><a href="../campaigns/MFT20260204a.html">MFT20260204a</a></td></tr>
-<tr><td><a href="2026-02-05T13-00.html">2026-02-05 13:00</a></td><td><span class="mfc-goes mfc-goes-m">M1.7</span></td><td>M</td><td>EUI</td><td></td><td>0.57</td><td><a href="../campaigns/MFT20260205a.html">MFT20260205a</a></td></tr>
-<tr><td><a href="2026-02-05T15-08.html">2026-02-05 15:08</a></td><td><span class="mfc-goes mfc-goes-m">M1.8</span></td><td>M</td><td>EUI</td><td></td><td>0.57</td><td><a href="../campaigns/MFT20260205a.html">MFT20260205a</a></td></tr>
-<tr><td><a href="2026-02-06T09-25.html">2026-02-06 09:25</a></td><td><span class="mfc-goes mfc-goes-c">C3.2</span></td><td>C</td><td>EUI</td><td></td><td>0.56</td><td><a href="../campaigns/MFT20260206a.html">MFT20260206a</a></td></tr>
-<tr><td><a href="2026-02-08T05-45.html">2026-02-08 05:45</a></td><td><span class="mfc-goes mfc-goes-c">C5</span></td><td>C</td><td>SPICE</td><td>YES</td><td>0.54</td><td><a href="../campaigns/MFT20260208b.html">MFT20260208b</a></td></tr>
+<tr><td><a href="2024-03-19T23-30.html">2024-03-19 23:30</a></td><td><span class="mfc-goes mfc-goes-m">M2.2</span></td><td>M</td><td>EUI, SPICE, PHI</td><td>EUI, SPICE</td><td>Yes</td><td>0.44</td><td><a href="../campaigns/MFW20240319A.html">MFW20240319A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-03-23T22-44.html">2024-03-23 22:44</a></td><td><span class="mfc-goes mfc-goes-c">C5.9</span></td><td>C</td><td>EUI, SPICE, PHI</td><td>EUI</td><td>Yes</td><td>0.38</td><td><a href="../campaigns/MFW20240323A.html">MFW20240323A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-03-23T22-54.html">2024-03-23 22:54</a></td><td><span class="mfc-goes mfc-goes-c">C7.9</span></td><td>C</td><td>EUI, SPICE, PHI</td><td>EUI</td><td>Yes</td><td>0.38</td><td><a href="../campaigns/MFW20240323A.html">MFW20240323A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-03-23T23-41.html">2024-03-23 23:41</a></td><td><span class="mfc-goes mfc-goes-m">M2.5</span></td><td>M</td><td>EUI, SPICE, PHI</td><td>EUI, SPICE</td><td>Yes</td><td>0.38</td><td><a href="../campaigns/MFW20240323A.html">MFW20240323A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-03-24T00-53.html">2024-03-24 00:53</a></td><td><span class="mfc-goes mfc-goes-c">C9.9</span></td><td>C</td><td>EUI, SPICE, PHI</td><td>EUI</td><td>Yes</td><td>0.38</td><td><a href="../campaigns/MFW20240323A.html">MFW20240323A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-03-24T01-48.html">2024-03-24 01:48</a></td><td><span class="mfc-goes mfc-goes-m">M2.2</span></td><td>M</td><td>EUI, SPICE, PHI</td><td>EUI, SPICE</td><td>Yes</td><td>0.38</td><td><a href="../campaigns/MFW20240323A.html">MFW20240323A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-03-24T02-09.html">2024-03-24 02:09</a></td><td><span class="mfc-goes mfc-goes-m">M2.7</span></td><td>M</td><td>EUI, SPICE</td><td>EUI</td><td>Yes</td><td>0.38</td><td><a href="../campaigns/MFW20240323A.html">MFW20240323A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-04-02T20-55.html">2024-04-02 20:55</a></td><td><span class="mfc-goes mfc-goes-b">B5</span></td><td>B</td><td>EUI, SPICE, PHI</td><td>EUI</td><td>No</td><td>0.29</td><td><a href="../campaigns/MFW20240402A.html">MFW20240402A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-04-02T20-59.html">2024-04-02 20:59</a></td><td><span class="mfc-goes mfc-goes-b">B3</span></td><td>B</td><td>EUI, SPICE, PHI</td><td>EUI</td><td>No</td><td>0.29</td><td><a href="../campaigns/MFW20240402A.html">MFW20240402A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-04-02T21-32.html">2024-04-02 21:32</a></td><td><span class="mfc-goes mfc-goes-b">B6</span></td><td>B</td><td>EUI, SPICE, PHI</td><td>EUI</td><td>No</td><td>0.29</td><td><a href="../campaigns/MFW20240402A.html">MFW20240402A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-04-03T21-52.html">2024-04-03 21:52</a></td><td><span class="mfc-goes mfc-goes-b">B3.3</span></td><td>B</td><td>EUI, SPICE</td><td>EUI</td><td></td><td>0.29</td><td><a href="../campaigns/MFW20240403A.html">MFW20240403A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-04-04T20-05.html">2024-04-04 20:05</a></td><td><span class="mfc-goes mfc-goes-c">C2.5</span></td><td>C</td><td>EUI, SPICE, PHI</td><td>EUI</td><td>No</td><td>0.29</td><td><a href="../campaigns/MFW20240404A.html">MFW20240404A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-04-04T20-12.html">2024-04-04 20:12</a></td><td><span class="mfc-goes mfc-goes-c">C5.0</span></td><td>C</td><td>EUI, SPICE, PHI</td><td>EUI</td><td>No</td><td>0.29</td><td><a href="../campaigns/MFW20240404A.html">MFW20240404A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-04-04T21-16.html">2024-04-04 21:16</a></td><td><span class="mfc-goes mfc-goes-c">C1.0</span></td><td>C</td><td>EUI, SPICE, PHI</td><td>EUI</td><td>No</td><td>0.29</td><td><a href="../campaigns/MFW20240404A.html">MFW20240404A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-04-04T21-42.html">2024-04-04 21:42</a></td><td><span class="mfc-goes mfc-goes-c">C3.2</span></td><td>C</td><td>EUI, SPICE, PHI</td><td>EUI</td><td>No</td><td>0.29</td><td><a href="../campaigns/MFW20240404A.html">MFW20240404A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-04-05T20-12.html">2024-04-05 20:12</a></td><td><span class="mfc-goes mfc-goes-c">C9.9</span></td><td>C</td><td>EUI, SPICE, PHI</td><td>EUI</td><td>No</td><td>0.3</td><td><a href="../campaigns/MFW20240405A.html">MFW20240405A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-04-05T21-46.html">2024-04-05 21:46</a></td><td><span class="mfc-goes mfc-goes-c">C1.4</span></td><td>C</td><td>EUI, SPICE, PHI</td><td>EUI</td><td>No</td><td>0.3</td><td><a href="../campaigns/MFW20240405A.html">MFW20240405A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-04-05T22-19.html">2024-04-05 22:19</a></td><td><span class="mfc-goes mfc-goes-c">C1.1</span></td><td>C</td><td>EUI, SPICE, PHI</td><td>EUI</td><td>No</td><td>0.3</td><td><a href="../campaigns/MFW20240405A.html">MFW20240405A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-04-05T23-42.html">2024-04-05 23:42</a></td><td><span class="mfc-goes mfc-goes-b">B5</span></td><td>B</td><td>EUI, SPICE</td><td>EUI</td><td>No</td><td>0.3</td><td><a href="../campaigns/MFW20240405A.html">MFW20240405A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-09-30T23-47.html">2024-09-30 23:47</a></td><td><span class="mfc-goes mfc-goes-m">M7</span></td><td>M</td><td>EUI, SPICE, PHI</td><td>PHI, SPICE, EUI</td><td></td><td></td><td>outside windows (Earth Quadrature)</td><td>Outside windows</td></tr>
+<tr><td><a href="2024-10-15T10-00.html">2024-10-15 10:00</a></td><td><span class="mfc-goes mfc-goes-m">M1</span></td><td>M</td><td>EUI, PHI</td><td>PHI, EUI</td><td></td><td></td><td>outside windows (AR long term)</td><td>Outside windows</td></tr>
+<tr><td><a href="2024-10-15T16-25.html">2024-10-15 16:25</a></td><td><span class="mfc-goes mfc-goes-c">C2.0</span></td><td>C</td><td>SPICE</td><td>EUI, SPICE</td><td></td><td>0.43</td><td><a href="../campaigns/MFW20241015A.html">MFW20241015A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-10-15T18-30.html">2024-10-15 18:30</a></td><td><span class="mfc-goes mfc-goes-m">M2.0</span></td><td>M</td><td>EUI, SPICE, PHI</td><td>EUI</td><td></td><td>0.43</td><td><a href="../campaigns/MFW20241015A.html">MFW20241015A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-10-15T19-48.html">2024-10-15 19:48</a></td><td><span class="mfc-goes mfc-goes-c">C4</span></td><td>C</td><td>EUI, SPICE, PHI</td><td>EUI</td><td></td><td>0.43</td><td><a href="../campaigns/MFW20241015A.html">MFW20241015A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-10-15T23-15.html">2024-10-15 23:15</a></td><td><span class="mfc-goes mfc-goes-c">C9.0</span></td><td>C</td><td>SPICE</td><td>SPICE</td><td></td><td>0.43</td><td><a href="../campaigns/MFW20241015A.html">MFW20241015A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2024-12-05T00-43.html">2024-12-05 00:43</a></td><td><span class="mfc-goes mfc-goes-c">C2</span></td><td>C</td><td>EUI</td><td>EUI</td><td></td><td>0.9</td><td><a href="../campaigns/MFT20241205a.html">MFT20241205a</a></td><td>Trigger</td></tr>
+<tr><td><a href="2024-12-07T13-06.html">2024-12-07 13:06</a></td><td><span class="mfc-goes mfc-goes-m">M2.4</span></td><td>M</td><td>EUI</td><td>EUI</td><td></td><td>0.91</td><td><a href="../campaigns/MFT20241207a.html">MFT20241207a</a></td><td>Trigger</td></tr>
+<tr><td><a href="2024-12-11T02-10.html">2024-12-11 02:10</a></td><td><span class="mfc-goes mfc-goes-c">C3.1</span></td><td>C</td><td>EUI</td><td>EUI</td><td></td><td>0.92</td><td><a href="../campaigns/MFT20241211a.html">MFT20241211a</a></td><td>Trigger</td></tr>
+<tr><td><a href="2024-12-11T03-26.html">2024-12-11 03:26</a></td><td><span class="mfc-goes mfc-goes-c">C6.9</span></td><td>C</td><td>EUI</td><td>EUI</td><td></td><td>0.92</td><td><a href="../campaigns/MFT20241211a.html">MFT20241211a</a></td><td>Trigger</td></tr>
+<tr><td><a href="2025-03-14T21-30.html">2025-03-14 21:30</a></td><td><span class="mfc-goes mfc-goes-c">C1.9</span></td><td>C</td><td>EUI, SPICE, PHI</td><td>EUI, SPICE</td><td></td><td>0.45</td><td><a href="../campaigns/MFW20250314A.html">MFW20250314A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2025-03-30T14-04.html">2025-03-30 14:04</a></td><td><span class="mfc-goes mfc-goes-c">C1.5</span></td><td>C</td><td>EUI, SPICE, PHI</td><td>EUI</td><td></td><td>0.3</td><td><a href="../campaigns/MFW20250330A.html">MFW20250330A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2025-09-13T19-15.html">2025-09-13 19:15</a></td><td><span class="mfc-goes mfc-goes-u">Unknown</span></td><td>U</td><td>EUI, SPICE, PHI</td><td>SPICE</td><td></td><td>0.3</td><td><a href="../campaigns/MFW20250913A.html">MFW20250913A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2025-09-17T09-35.html">2025-09-17 09:35</a></td><td><span class="mfc-goes mfc-goes-c">C1.8</span></td><td>C</td><td>EUI, SPICE, PHI</td><td>EUI</td><td></td><td>0.3</td><td><a href="../campaigns/MFW20250917A.html">MFW20250917A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2025-10-06T20-33.html">2025-10-06 20:33</a></td><td><span class="mfc-goes mfc-goes-c">C5.1</span></td><td>C</td><td>EUI, SPICE, PHI</td><td>EUI, SPICE, PHI</td><td></td><td>0.5</td><td><a href="../campaigns/MFW20251006A.html">MFW20251006A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2025-11-24T10-31.html">2025-11-24 10:31</a></td><td><span class="mfc-goes mfc-goes-b">B9.1</span></td><td>B</td><td>EUI</td><td>EUI</td><td></td><td>0.88</td><td><a href="../campaigns/MFT20251124a.html">MFT20251124a</a></td><td>Trigger</td></tr>
+<tr><td><a href="2025-11-24T12-29.html">2025-11-24 12:29</a></td><td><span class="mfc-goes mfc-goes-b">B7.8</span></td><td>B</td><td>EUI</td><td>EUI</td><td></td><td>0.88</td><td><a href="../campaigns/MFT20251124a.html">MFT20251124a</a></td><td>Trigger</td></tr>
+<tr><td><a href="2025-11-26T10-22.html">2025-11-26 10:22</a></td><td><span class="mfc-goes mfc-goes-c">C2</span></td><td>C</td><td>EUI</td><td>EUI</td><td></td><td>0.88</td><td><a href="../campaigns/MFT20251126a.html">MFT20251126a</a></td><td>Trigger</td></tr>
+<tr><td><a href="2025-11-28T10-12.html">2025-11-28 10:12</a></td><td><span class="mfc-goes mfc-goes-c">C3.6</span></td><td>C</td><td>EUI</td><td>EUI</td><td></td><td>0.89</td><td><a href="../campaigns/MFT20251128a.html">MFT20251128a</a></td><td>Trigger</td></tr>
+<tr><td><a href="2025-12-10T07-35.html">2025-12-10 07:35</a></td><td><span class="mfc-goes mfc-goes-m">M2.0</span></td><td>M</td><td>EUI</td><td>EUI</td><td></td><td>0.9</td><td><a href="../campaigns/MFT20251210a.html">MFT20251210a</a></td><td>Trigger</td></tr>
+<tr><td><a href="2025-12-10T09-54.html">2025-12-10 09:54</a></td><td><span class="mfc-goes mfc-goes-m">M1.0</span></td><td>M</td><td>EUI</td><td>EUI</td><td></td><td>0.9</td><td><a href="../campaigns/MFT20251210a.html">MFT20251210a</a></td><td>Trigger</td></tr>
+<tr><td><a href="2026-01-30T20-26.html">2026-01-30 20:26</a></td><td><span class="mfc-goes mfc-goes-b">B9.7</span></td><td>B</td><td>EUI</td><td>EUI</td><td></td><td>0.63</td><td><a href="../campaigns/MFT20260130a.html">MFT20260130a</a></td><td>Trigger</td></tr>
+<tr><td><a href="2026-02-04T18-56.html">2026-02-04 18:56</a></td><td><span class="mfc-goes mfc-goes-c">C2.2</span></td><td>C</td><td>EUI</td><td>EUI</td><td></td><td>0.58</td><td><a href="../campaigns/MFT20260204a.html">MFT20260204a</a></td><td>Trigger</td></tr>
+<tr><td><a href="2026-02-05T13-00.html">2026-02-05 13:00</a></td><td><span class="mfc-goes mfc-goes-m">M1.7</span></td><td>M</td><td>EUI</td><td>EUI</td><td></td><td>0.57</td><td><a href="../campaigns/MFT20260205a.html">MFT20260205a</a></td><td>Trigger</td></tr>
+<tr><td><a href="2026-02-05T15-08.html">2026-02-05 15:08</a></td><td><span class="mfc-goes mfc-goes-m">M1.8</span></td><td>M</td><td>EUI</td><td>EUI</td><td></td><td>0.57</td><td><a href="../campaigns/MFT20260205a.html">MFT20260205a</a></td><td>Trigger</td></tr>
+<tr><td><a href="2026-02-06T09-25.html">2026-02-06 09:25</a></td><td><span class="mfc-goes mfc-goes-c">C3.2</span></td><td>C</td><td>EUI</td><td>EUI</td><td></td><td>0.56</td><td><a href="../campaigns/MFT20260206a.html">MFT20260206a</a></td><td>Trigger</td></tr>
+<tr><td><a href="2026-02-08T05-45.html">2026-02-08 05:45</a></td><td><span class="mfc-goes mfc-goes-c">C5</span></td><td>C</td><td>SPICE</td><td>SPICE</td><td>YES</td><td>0.54</td><td><a href="../campaigns/MFT20260208b.html">MFT20260208b</a></td><td>Trigger</td></tr>
+<tr><td><a href="2026-08-18T17-13.html">2026-08-18 17:13</a></td><td><span class="mfc-goes mfc-goes-m">M2</span></td><td>M</td><td>EUI, SPICE</td><td>EUI, SPICE</td><td></td><td>0.29</td><td><a href="../campaigns/MFT20260818A.html">MFT20260818A</a></td><td>Trigger</td></tr>
+<tr><td><a href="2026-08-19T18-37.html">2026-08-19 18:37</a></td><td><span class="mfc-goes mfc-goes-m">M1</span></td><td>M</td><td>EUI, SPICE, PHI</td><td>EUI, SPICE, PHI</td><td></td><td>0.29</td><td><a href="../campaigns/MFW20260819A.html">MFW20260819A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2026-08-20T16-02.html">2026-08-20 16:02</a></td><td><span class="mfc-goes mfc-goes-m">M2</span></td><td>M</td><td>EUI, PHI</td><td>EUI, PHI</td><td></td><td>0.3</td><td><a href="../campaigns/MFW20260820A.html">MFW20260820A</a></td><td>MFC-SOOP</td></tr>
+<tr><td><a href="2026-08-25T09-50.html">2026-08-25 09:50</a></td><td><span class="mfc-goes mfc-goes-m">M7</span></td><td>M</td><td>EUI, PHI</td><td>PHI, EUI</td><td></td><td></td><td>outside windows (AR long term)</td><td>Outside windows</td></tr>
 </tbody></table></div>
 <p class="mfc-empty" hidden>No rows match those filters.</p>
 </div>
@@ -140,6 +169,8 @@ The same data is available as a CSV download on the [Data](../data.md) page.
 2024-04-05T21-46
 2024-04-05T22-19
 2024-04-05T23-42
+2024-09-30T23-47
+2024-10-15T10-00
 2024-10-15T16-25
 2024-10-15T18-30
 2024-10-15T19-48
@@ -165,4 +196,8 @@ The same data is available as a CSV download on the [Data](../data.md) page.
 2026-02-05T15-08
 2026-02-06T09-25
 2026-02-08T05-45
+2026-08-18T17-13
+2026-08-19T18-37
+2026-08-20T16-02
+2026-08-25T09-50
 ```

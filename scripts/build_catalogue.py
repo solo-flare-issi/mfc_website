@@ -6,6 +6,17 @@ Reads, in order of preference:
     data/Full Major Flare Catalogue.xlsx   the team's working catalogue
     data/mfc_catalogue_final.csv           SOAR-verified observed windows
 
+The workbook's "Other large flares outside wind" sheet lists flares caught
+at high cadence under other SOOPs; they are included in the flare catalogue
+with no campaign attached.
+
+Each flare carries two instrument fields.  `observed_by` is the team's
+note of which instruments the flare is clearly seen in.  `instruments` is
+which instruments were taking data at the flare time, derived from the
+SOAR-verified windows (every MFC-SOOP window runs EUI, SPICE and PHI, the
+trigger windows mostly EUI alone).  Where SOAR has no data yet the
+`observed_by` entry is used and `coverage_source` says so.
+
 To build straight from Google Sheets, publish the sheet to the web
 (File > Share > Publish to web) and set the sheet key:
 
@@ -70,6 +81,16 @@ class Flare:
     seen_from_earth: str = ""
     so_au: str = ""
     hg_stonyhurst: str = ""
+    # which instruments were taking data at the flare time
+    instruments: str = ""
+    eui: str = ""
+    spice: str = ""
+    phi: str = ""
+    coverage_source: str = ""   # "SOAR", "catalogue" or ""
+    # flares outside the campaign windows
+    context: str = "campaign"   # "campaign" or "outside"
+    soop: str = ""
+    notes: str = ""
 
     @property
     def goes_letter(self) -> str:
@@ -79,6 +100,45 @@ class Flare:
     @property
     def sort_key(self) -> str:
         return f"{self.date} {self.time_ut}"
+
+    @property
+    def n_instruments(self) -> int:
+        return sum(1 for x in (self.eui, self.spice, self.phi) if x == "yes")
+
+
+INSTRUMENTS = ("EUI", "SPICE", "PHI")
+
+
+def _parse_ts(text: str):
+    try:
+        return dt.datetime.strptime(text.strip(), "%Y-%m-%d %H:%M")
+    except (ValueError, AttributeError):
+        return None
+
+
+def set_instruments(f: Flare, soar_row: dict | None) -> None:
+    """Fill the per-instrument coverage of a flare.
+
+    Uses the SOAR-verified start and end of each instrument's run, so a
+    flare after PHI stopped early is marked PHI "no" even though PHI was
+    planned.  Falls back to the catalogue's observed-by entry when the
+    window is not in SOAR yet.
+    """
+    when = _parse_ts(f"{f.date} {f.time_ut}") if f.time_ut else None
+    have = {}
+    if soar_row and when:
+        for inst in INSTRUMENTS:
+            start = _parse_ts(soar_row.get(f"{inst} start (UTC)", ""))
+            end = _parse_ts(soar_row.get(f"{inst} end (UTC)", ""))
+            have[inst] = bool(start and end and start <= when <= end)
+        if any(_parse_ts(soar_row.get(f"{i} start (UTC)", "")) for i in INSTRUMENTS):
+            f.coverage_source = "SOAR"
+    if f.coverage_source != "SOAR":
+        seen = f.observed_by.upper()
+        have = {inst: inst in seen for inst in INSTRUMENTS}
+        f.coverage_source = "catalogue" if f.observed_by else ""
+    f.eui, f.spice, f.phi = ("yes" if have.get(i) else "no" for i in INSTRUMENTS)
+    f.instruments = ", ".join(i for i in INSTRUMENTS if have.get(i))
 
 
 @dataclass
@@ -318,9 +378,41 @@ def read_rows(rows: list, kind: str, soar: dict[str, dict]) -> list[Campaign]:
             c.soop = s.get("EUI SOOP in SOAR", "")
             if not c.season:
                 c.season = s.get("Season", "")
+        for f in c.flares:
+            set_instruments(f, soar.get(uid))
 
         campaigns.append(c)
     return campaigns
+
+
+def read_outside_flares(rows: list) -> list[Flare]:
+    """Flares from the "Other large flares outside wind" sheet.
+
+    Columns: Date, SOOP, Flare time, GOES class, Observed by, Notes.
+    These were caught under other SOOPs, so there is no campaign window and
+    no SOAR verification; the observed-by entry gives the instruments.
+    """
+    flares = []
+    for row in rows[1:]:
+        if len(row) < 4 or not row[0]:
+            continue
+        date = cell_to_text(row[0])
+        time_ut = cell_to_text(row[2])
+        m = re.match(r"(\d{1,2})[:.](\d{2})", time_ut)
+        time_ut = f"{int(m.group(1)):02d}:{m.group(2)}" if m else time_ut
+        goes = cell_to_text(row[3])
+        if not date or not goes:
+            continue
+        obs = ", ".join(x.strip() for x in cell_to_text(row[4]).split(",") if x.strip())
+        f = Flare(
+            flare_id=f"{date}T{time_ut.replace(':', '-')}", campaign_uid="",
+            date=date, time_ut=time_ut, goes_class=goes, observed_by=obs,
+            context="outside", soop=cell_to_text(row[1]).strip(" ,"),
+            notes=cell_to_text(row[5]) if len(row) > 5 else "",
+        )
+        set_instruments(f, None)
+        flares.append(f)
+    return flares
 
 
 # --------------------------------------------------------------------------
@@ -425,9 +517,15 @@ def write_campaign_page(c: Campaign) -> None:
     # flares
     L += ["## Flares observed", ""]
     if c.flares:
-        rows = [[f"[{f.time_ut}](../flares/{f.flare_id}.md)", f.goes_class, f.observed_by]
+        rows = [[f"[{f.time_ut}](../flares/{f.flare_id}.md)", f.goes_class,
+                 f.instruments, f.observed_by]
                 for f in c.flares]
-        L += [md_table(["Time (UT)", "GOES class", "Observed by"], rows), ""]
+        L += [md_table(["Time (UT)", "GOES class", "Instrument data",
+                        "Clearly seen in"], rows), "",
+              "*Instrument data* lists the instruments taking data at the "
+              "flare time, from the SOAR-verified windows above. "
+              "*Clearly seen in* is the observer's note of where the flare "
+              "is evident.", ""]
     else:
         L += ["No flare recorded in this window.", ""]
 
@@ -460,18 +558,30 @@ def write_campaign_page(c: Campaign) -> None:
     (DOCS / "campaigns" / f"{c.uid}.md").write_text("\n".join(L))
 
 
-def write_flare_page(f: Flare, c: Campaign) -> None:
+def write_flare_page(f: Flare, c: Campaign | None) -> None:
     L = ["---", "html_theme.sidebar_secondary.remove: true", "---", "",
          GENERATED_NOTE,
          f"# {f.date} {f.time_ut} ({f.goes_class or 'unclassified'})", ""]
+    coverage = " / ".join(f"{i} {'yes' if v == 'yes' else 'no'}"
+                          for i, v in zip(INSTRUMENTS, (f.eui, f.spice, f.phi)))
+    source = {"SOAR": "from SOAR-verified windows",
+              "catalogue": "from the working catalogue, not yet verified in SOAR"
+              }.get(f.coverage_source, "")
     facts = [
         ("Date", f.date), ("Time (UT)", f.time_ut), ("GOES class", f.goes_class),
-        ("Observed by", f.observed_by), ("Seen from Earth", f.seen_from_earth),
+        ("Instrument data", f"{coverage}" + (f" ({source})" if source else "")),
+        ("Clearly seen in", f.observed_by), ("Seen from Earth", f.seen_from_earth),
         ("Spacecraft distance", f"{f.so_au} AU" if f.so_au else ""),
         ("Spacecraft location (HG Stonyhurst)", f.hg_stonyhurst),
-        ("Campaign", f"[{c.uid}](../campaigns/{c.uid}.md) ({c.type_label})"),
-        ("LTP", c.ltp), ("Season", c.season),
     ]
+    if c is not None:
+        facts += [
+            ("Campaign", f"[{c.uid}](../campaigns/{c.uid}.md) ({c.type_label})"),
+            ("LTP", c.ltp), ("Season", c.season),
+        ]
+    else:
+        facts += [("Campaign", "none: outside the Major Flare Campaign windows"),
+                  ("SOOP", f.soop), ("Notes", f.notes)]
     L += ["## Quick facts", "",
           md_table(["Property", "Value"], [[k, v] for k, v in facts if v]), "",
           "## Lightcurves and imaging", "",
@@ -547,48 +657,75 @@ def write_campaign_index(campaigns: list[Campaign]) -> None:
     (DOCS / "campaigns" / "index.md").write_text("\n".join(L))
 
 
-def write_flare_index(campaigns: list[Campaign]) -> None:
+def write_flare_index(campaigns: list[Campaign], outside: list[Flare]) -> None:
     flares = sorted(
-        [(f, c) for c in campaigns for f in c.flares], key=lambda p: p[0].sort_key
+        [(f, c) for c in campaigns for f in c.flares] + [(f, None) for f in outside],
+        key=lambda p: p[0].sort_key,
     )
+
+    def where(f: Flare, c: Campaign | None) -> str:
+        if c is not None:
+            return html_link(c.uid, f"../campaigns/{c.uid}.html")
+        return f"outside windows ({f.soop})" if f.soop else "outside windows"
+
     rows = [[
         html_link(f"{f.date} {f.time_ut}", f"{f.flare_id}.html"),
         f'<span class="mfc-goes mfc-goes-{f.goes_letter.lower()}">{f.goes_class}</span>',
-        f.goes_letter, f.observed_by, f.seen_from_earth,
-        f.so_au, html_link(c.uid, f"../campaigns/{c.uid}.html"),
+        f.goes_letter, f.instruments, f.observed_by, f.seen_from_earth,
+        f.so_au, where(f, c),
+        "MFC-SOOP" if c and c.kind == "Major Flare" else ("Trigger" if c else "Outside windows"),
     ] for f, c in flares]
 
     counts: dict[str, int] = {}
     for f, _ in flares:
         counts[f.goes_letter] = counts.get(f.goes_letter, 0) + 1
     letters = [k for k in ["X", "M", "C", "B", "A"] if k in counts]
+    n_phi = sum(1 for f, _ in flares if f.phi == "yes")
+    n_spice = sum(1 for f, _ in flares if f.spice == "yes")
+    n_all = sum(1 for f, _ in flares if f.n_instruments == 3)
+    n_window = sum(1 for _, c in flares if c is not None)
+    n_mx = sum(counts.get(k, 0) for k in ("M", "X"))
 
     L = ["---", "html_theme.sidebar_secondary.remove: true", "---", "",
          GENERATED_NOTE, "# Flare catalogue", "",
-         f"Every flare recorded within a Solar Orbiter Major Flare Campaigns "
-         f"window since 2023. Classes for far-side events are estimated from "
-         f"STIX. Column headings sort the table.", "",
+         f"Every flare recorded in a Solar Orbiter Major Flare Campaigns "
+         f"window since 2023 ({n_window} flares), plus {len(outside)} large flares "
+         f"caught at high cadence under other SOOPs. Classes for far-side "
+         f"events are estimated from STIX. Column headings sort the table.", "",
+         "**Instrument data** gives the instruments that were taking data at "
+         "the flare time, from the SOAR-verified campaign windows. Every "
+         "MFC-SOOP window runs EUI, SPICE and PHI together, so flares in those "
+         "windows have all three unless an instrument stopped early. The "
+         "trigger windows are EUI alone, with SPICE on some. "
+         "**Clearly seen in** is the observer's note of where the flare is "
+         "evident.", "",
          "::::{grid} 2 4 4 4", ":gutter: 2", ""]
-    L += [f":::{{grid-item-card}} {len(flares)}", ":class-card: mfc-stat", "",
-          "flares recorded", ":::", ""]
-    for k in letters[:3]:
-        L += [f":::{{grid-item-card}} {counts[k]}", ":class-card: mfc-stat", "",
-              f"{k}-class", ":::", ""]
+    for n, label in [(len(flares), "flares recorded"),
+                     (n_mx, "M- and X-class"),
+                     (n_phi, "with PHI data"),
+                     (n_spice, "with SPICE data"),
+                     (n_all, "with EUI, SPICE and PHI")]:
+        L += [f":::{{grid-item-card}} {n}", ":class-card: mfc-stat", "",
+              label, ":::", ""]
     L += ["::::", "",
-          ":::{warning} Not yet included",
-          "The four flares captured by the PHI trigger campaigns (2024-12-08 "
-          "X2.3, 2026-02-03 X1.5, 2026-02-04 X4.2 and 2026-02-06 C2) are "
+          ":::{admonition} Not yet included",
+         ":class: warning",
+          "The flares captured by the PHI trigger campaigns (2026-02-03 "
+          "X1.5, 2026-02-04 X4.2 and 2026-02-06 C2) are "
           "described on the [Trigger Campaigns](../trigger-campaigns.md) page "
           "but have not yet been entered in the working spreadsheet, so they "
           "are absent from the table below.",
           ":::", "",
           interactive_table(
-              ["Peak time (UT)", "GOES class", "Class", "Observed by",
-               "Seen from Earth", "SO distance (AU)", "Campaign"],
+              ["Peak time (UT)", "GOES class", "Class", "Instrument data",
+               "Clearly seen in", "Seen from Earth", "SO distance (AU)",
+               "Campaign", "Type"],
               rows,
               filters=[("Class", 2, letters),
-                       ("Seen from Earth", 4, ["Yes", "No"])],
-              numeric_cols={5},
+                       ("Instrument data", 3, list(INSTRUMENTS)),
+                       ("Type", 8, ["MFC-SOOP", "Trigger", "Outside windows"]),
+                       ("Seen from Earth", 5, ["Yes", "No"])],
+              numeric_cols={6},
           ), "",
           "The same data is available as a CSV download on the "
           "[Data](../data.md) page.", "",
@@ -598,7 +735,7 @@ def write_flare_index(campaigns: list[Campaign]) -> None:
     (DOCS / "flares" / "index.md").write_text("\n".join(L))
 
 
-def write_data_csvs(campaigns: list[Campaign]) -> None:
+def write_data_csvs(campaigns: list[Campaign], outside: list[Flare]) -> None:
     out = DOCS / "_data"
     out.mkdir(exist_ok=True)
     camp_fields = [k for k in asdict(campaigns[0]) if k != "flares"]
@@ -609,7 +746,8 @@ def write_data_csvs(campaigns: list[Campaign]) -> None:
             d = asdict(c)
             d.pop("flares")
             w.writerow(d)
-    flares = [f for c in campaigns for f in c.flares]
+    flares = sorted([f for c in campaigns for f in c.flares] + outside,
+                    key=lambda f: f.sort_key)
     if flares:
         with (out / "flares.csv").open("w", newline="") as fh:
             w = csv.DictWriter(fh, fieldnames=list(asdict(flares[0])))
@@ -626,6 +764,8 @@ def main() -> None:
     soar = read_soar()
     campaigns: list[Campaign] = []
 
+    outside: list[Flare] = []
+
     key = os.environ.get(SHEET_KEY_ENV)
     if key:
         print(f"reading from Google Sheet {key}")
@@ -633,6 +773,11 @@ def main() -> None:
                             ("Trigger instances", "Trigger")]:
             rows = fetch_google_sheet(key, sheet)
             campaigns += read_rows(rows, kind, soar)
+        try:
+            outside = read_outside_flares(
+                fetch_google_sheet(key, "Other large flares outside wind"))
+        except Exception as exc:  # the sheet is optional
+            print(f"  no outside-windows sheet: {exc}")
     else:
         wb = openpyxl.load_workbook(XLSX)
         for name in wb.sheetnames:
@@ -642,6 +787,8 @@ def main() -> None:
                 campaigns += read_rows(rows, "Major Flare", soar)
             elif name.strip().startswith("Trigger"):
                 campaigns += read_rows(rows, "Trigger", soar)
+            elif name.strip().lower().startswith("other large flares"):
+                outside = read_outside_flares(rows)
 
     campaigns.sort(key=lambda c: (c.date, c.uid))
 
@@ -655,13 +802,19 @@ def main() -> None:
         write_campaign_page(c)
         for f in c.flares:
             write_flare_page(f, c)
+    for f in outside:
+        write_flare_page(f, None)
 
     write_campaign_index(campaigns)
-    write_flare_index(campaigns)
-    write_data_csvs(campaigns)
+    write_flare_index(campaigns, outside)
+    write_data_csvs(campaigns, outside)
 
-    n_flares = sum(len(c.flares) for c in campaigns)
-    print(f"{len(campaigns)} campaigns, {n_flares} flares")
+    n_flares = sum(len(c.flares) for c in campaigns) + len(outside)
+    all_flares = [f for c in campaigns for f in c.flares] + outside
+    n_phi = sum(1 for f in all_flares if f.phi == "yes")
+    n_all = sum(1 for f in all_flares if f.n_instruments == 3)
+    print(f"{len(campaigns)} campaigns, {n_flares} flares "
+          f"({len(outside)} outside windows, {n_phi} with PHI, {n_all} with all three)")
     print(f"  -> docs/campaigns/  ({len(campaigns) + 1} pages)")
     print(f"  -> docs/flares/     ({n_flares + 1} pages)")
     print(f"  -> docs/_data/campaigns.csv, flares.csv")

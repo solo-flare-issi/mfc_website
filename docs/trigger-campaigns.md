@@ -115,7 +115,8 @@ Analysis of these events is ongoing and more detail will be added here,
 including the STIX spectral properties and the spacecraft geometry for
 each.
 
-:::{note} Campaign write-ups in progress
+:::{admonition} Campaign write-ups in progress
+:class: note
 Detailed accounts of how the December 2024, November and December 2025,
 and January and February 2026 trigger campaigns were run in practice,
 covering which instances ran, what EUI sequences were captured, and what

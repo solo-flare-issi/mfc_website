@@ -39,6 +39,9 @@ flares = pd.read_csv(base + "flares.csv")
 # every M or X class flare seen from Solar Orbiter
 major = flares[flares.goes_class.str.match(r"[MX]", na=False)]
 
+# flares with EUI, SPICE and PHI all taking data
+all_three = flares[(flares.eui == "yes") & (flares.spice == "yes") & (flares.phi == "yes")]
+
 # join a flare back to the window it was observed in
 merged = flares.merge(campaigns, left_on="campaign_uid",
                       right_on="uid", suffixes=("_flare", "_campaign"))
@@ -74,9 +77,14 @@ merged = flares.merge(campaigns, left_on="campaign_uid",
 | `campaign_uid` | The campaign window the flare falls in |
 | `date`, `time_ut` | Date and time of the flare in UT |
 | `goes_class` | GOES class, or a STIX estimate for far side events |
-| `observed_by` | Solar Orbiter instruments that recorded it |
+| `instruments` | Instruments taking data at the flare time, from the SOAR-verified campaign windows |
+| `eui`, `spice`, `phi` | `yes` or `no` for each instrument, the same information one column per instrument |
+| `coverage_source` | `SOAR` when derived from verified windows, `catalogue` when taken from the working spreadsheet for windows not yet in the archive |
+| `observed_by` | The observer's note of which instruments the flare is clearly seen in |
 | `seen_from_earth` | Whether the flare was visible from Earth |
 | `so_au`, `hg_stonyhurst` | Spacecraft distance and location |
+| `context` | `campaign` for flares in a Major Flare Campaign window, `outside` for large flares caught under other SOOPs |
+| `soop`, `notes` | For flares outside the campaign windows, the SOOP that caught them and any notes |
 
 ## Provenance and caveats
 

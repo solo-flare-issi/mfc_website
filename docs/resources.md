@@ -68,7 +68,8 @@ carried on the per-campaign detail pages.
 the 2026-09-18 instance, but the data-access path still needs documenting
 here.
 
-:::{tip} Something missing?
+:::{admonition} Something missing?
+:class: tip
 If you know of a resource that should be on this list, or a link here
 has rotted, please [contribute](contribute.md) a correction.
 :::

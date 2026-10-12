@@ -6,7 +6,7 @@ html_theme.sidebar_secondary.remove: true
 
 # Campaign catalogue
 
-Every observing window in the Solar Orbiter Major Flare Campaigns: **25 MFC-SOOP instances** and **39 flare-trigger windows**, 24 of which recorded a flare.
+Every observing window in the Solar Orbiter Major Flare Campaigns: **25 MFC-SOOP instances** and **39 flare-trigger windows**, 27 of which recorded a flare.
 
 Click a campaign to open its detail page, which gives the planned and observed windows for each instrument, the flares captured, and where to find the data. Column headings sort the table.
 
@@ -31,7 +31,7 @@ MFC-SOOP instances
 trigger windows
 :::
 
-:::{grid-item-card} 44
+:::{grid-item-card} 47
 :class-card: mfc-stat
 
 flares recorded
@@ -137,12 +137,12 @@ flares recorded
 <tr><td><a href="MFW20260212A.html">MFW20260212A</a></td><td><span class="mfc-tag mfc-tag-soop">MFC-SOOP</span></td><td>2026-02-12</td><td>Winter 2026</td><td>LTP22</td><td>17:00 - 21:25</td><td>EUI, SPICE</td><td>none</td></tr>
 <tr><td><a href="MFW20260213A.html">MFW20260213A</a></td><td><span class="mfc-tag mfc-tag-soop">MFC-SOOP</span></td><td>2026-02-13</td><td>Winter 2026</td><td>LTP22</td><td>16:30 - 20:30</td><td>EUI, SPICE, PHI</td><td>none</td></tr>
 <tr><td><a href="MFW20260228A.html">MFW20260228A</a></td><td><span class="mfc-tag mfc-tag-soop">MFC-SOOP</span></td><td>2026-02-28</td><td>Winter 2026</td><td>LTP22</td><td>20:05 - 00:25</td><td>EUI, SPICE, PHI</td><td>none</td></tr>
-<tr><td><a href="MFT20260818A.html">MFT20260818A</a></td><td><span class="mfc-tag mfc-tag-trigger">Trigger (EUI)</span></td><td>2026-08-18</td><td>Summer 2026</td><td>LTP24</td><td>16:05 - 22:05</td><td></td><td>none</td></tr>
+<tr><td><a href="MFT20260818A.html">MFT20260818A</a></td><td><span class="mfc-tag mfc-tag-trigger">Trigger (EUI)</span></td><td>2026-08-18</td><td>Summer 2026</td><td>LTP24</td><td>16:05 - 22:05</td><td></td><td>M2</td></tr>
 <tr><td><a href="MFW20260818A.html">MFW20260818A</a></td><td><span class="mfc-tag mfc-tag-soop">MFC-SOOP</span></td><td>2026-08-18</td><td>Summer 2026</td><td>LTP24</td><td>12:05 - 16:05</td><td></td><td>none</td></tr>
 <tr><td><a href="MFT20260819A.html">MFT20260819A</a></td><td><span class="mfc-tag mfc-tag-trigger">Trigger (EUI)</span></td><td>2026-08-19</td><td>Summer 2026</td><td>LTP24</td><td>20:05 - 00:05</td><td></td><td>none</td></tr>
-<tr><td><a href="MFW20260819A.html">MFW20260819A</a></td><td><span class="mfc-tag mfc-tag-soop">MFC-SOOP</span></td><td>2026-08-19</td><td>Summer 2026</td><td>LTP24</td><td>16:05 - 20:05</td><td></td><td>none</td></tr>
+<tr><td><a href="MFW20260819A.html">MFW20260819A</a></td><td><span class="mfc-tag mfc-tag-soop">MFC-SOOP</span></td><td>2026-08-19</td><td>Summer 2026</td><td>LTP24</td><td>16:05 - 20:05</td><td></td><td>M1</td></tr>
 <tr><td><a href="MFT20260820A.html">MFT20260820A</a></td><td><span class="mfc-tag mfc-tag-trigger">Trigger (EUI)</span></td><td>2026-08-20</td><td>Summer 2026</td><td>LTP24</td><td>16:30 - 19:55</td><td></td><td>none</td></tr>
-<tr><td><a href="MFW20260820A.html">MFW20260820A</a></td><td><span class="mfc-tag mfc-tag-soop">MFC-SOOP</span></td><td>2026-08-20</td><td>Summer 2026</td><td>LTP24</td><td>12:30 - 16:30</td><td></td><td>none</td></tr>
+<tr><td><a href="MFW20260820A.html">MFW20260820A</a></td><td><span class="mfc-tag mfc-tag-soop">MFC-SOOP</span></td><td>2026-08-20</td><td>Summer 2026</td><td>LTP24</td><td>12:30 - 16:30</td><td></td><td>M2</td></tr>
 <tr><td><a href="MFW20260918A.html">MFW20260918A</a></td><td><span class="mfc-tag mfc-tag-soop">MFC-SOOP</span></td><td>2026-09-18</td><td>Summer 2026</td><td>LTP24</td><td>19:30 - 23:30</td><td></td><td>none</td></tr>
 </tbody></table></div>
 <p class="mfc-empty" hidden>No rows match those filters.</p>

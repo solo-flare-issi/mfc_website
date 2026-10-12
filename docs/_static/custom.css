@@ -8,34 +8,34 @@
 
 /* ---- Light mode palette ---- */
 html[data-theme="light"] {
-  --pst-color-primary: #c1440e;          /* deep solar orange */
-  --pst-color-primary-highlight: #96340b;
-  --pst-color-secondary: #e07a1f;        /* amber accent */
-  --pst-color-secondary-highlight: #b85f13;
-  --pst-color-link: #b03d0c;
-  --pst-color-link-hover: #e07a1f;
-  --pst-color-inline-code: #8a3208;
+  --pst-color-primary: #8c3b12;          /* muted rust, used sparingly */
+  --pst-color-primary-highlight: #6d2d0d;
+  --pst-color-secondary: #47566b;        /* slate, for secondary accents */
+  --pst-color-secondary-highlight: #35404f;
+  --pst-color-link: #8c3b12;
+  --pst-color-link-hover: #b8541f;
+  --pst-color-inline-code: #6d2d0d;
   --pst-color-background: #ffffff;
-  --pst-color-on-background: #fdfaf7;    /* warm off-white for navbar/cards */
-  --pst-color-surface: #f6f1ec;
-  --pst-color-border: #e4dcd4;
-  --pst-color-accent: #e07a1f;
+  --pst-color-on-background: #ffffff;
+  --pst-color-surface: #f4f4f2;
+  --pst-color-border: #dcdcd8;
+  --pst-color-accent: #8c3b12;
 }
 
 /* ---- Dark mode palette ---- */
 html[data-theme="dark"] {
-  --pst-color-primary: #ff8c42;          /* bright corona orange */
-  --pst-color-primary-highlight: #ffa866;
-  --pst-color-secondary: #ffc46b;
-  --pst-color-secondary-highlight: #ffd699;
-  --pst-color-link: #ff9d5c;
-  --pst-color-link-hover: #ffc46b;
-  --pst-color-inline-code: #ffb380;
-  --pst-color-background: #14161a;       /* deep space */
-  --pst-color-on-background: #1c1f25;
-  --pst-color-surface: #232730;
-  --pst-color-border: #333844;
-  --pst-color-accent: #ffc46b;
+  --pst-color-primary: #e08a5a;
+  --pst-color-primary-highlight: #f0a87c;
+  --pst-color-secondary: #9bacc4;
+  --pst-color-secondary-highlight: #b8c6da;
+  --pst-color-link: #e08a5a;
+  --pst-color-link-hover: #f0a87c;
+  --pst-color-inline-code: #e0a483;
+  --pst-color-background: #16181c;
+  --pst-color-on-background: #1d2025;
+  --pst-color-surface: #23262c;
+  --pst-color-border: #343840;
+  --pst-color-accent: #e08a5a;
 }
 
 /* ===================================================================
@@ -73,10 +73,10 @@ html[data-theme="dark"] {
 /* Site title: compact single line, with a Solar Orbiter eyebrow above */
 .bd-header .navbar-brand .title {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   white-space: nowrap;
   line-height: 1.15;
-  color: var(--pst-color-primary);
+  color: var(--pst-color-text-base);
 }
 .bd-header .navbar-brand .title::before {
   content: "SOLAR ORBITER";
@@ -154,36 +154,21 @@ html[data-theme="dark"] {
 
 /* Section cards */
 .sd-card {
-  border-radius: .4rem;
+  border-radius: .25rem;
   border-color: var(--pst-color-border);
-  background-color: var(--pst-color-on-background);
-  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+  background-color: transparent;
+  box-shadow: none;
 }
-.sd-card:hover {
-  border-color: var(--pst-color-primary);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, .10);
-  transform: translateY(-2px);
-}
+.sd-card:hover { border-color: var(--pst-color-secondary); }
 .sd-card-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--pst-color-primary);
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--pst-color-text-base);
 }
 .sd-card-body p {
   font-size: .85rem;
   line-height: 1.5;
   color: var(--pst-color-text-muted);
-}
-
-/* Headline-event cards */
-.mfc-event .sd-card-body { padding-top: .75rem; }
-img.mfc-thumb {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: .25rem;
-  margin-bottom: .6rem;
-  background: var(--pst-color-surface);
 }
 
 /* ===================================================================
@@ -387,3 +372,66 @@ html[data-theme="dark"] .mfc-goes-c { color: #e0b050; }
   padding-bottom: 1.1rem;
   row-gap: .4rem;
 }
+
+/* ===================================================================
+   Landing page
+   =================================================================== */
+
+/* Full-width hero image above the title */
+img.mfc-hero {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: .25rem;
+  margin: .5rem 0 .4rem;
+}
+p.mfc-caption {
+  font-size: .78rem;
+  color: var(--pst-color-text-muted);
+  margin: 0 0 2rem;
+  line-height: 1.5;
+}
+
+/* The one-line count of what the catalogue holds */
+p.mfc-figures {
+  font-size: .95rem;
+  color: var(--pst-color-text-muted);
+  border-top: 1px solid var(--pst-color-border);
+  border-bottom: 1px solid var(--pst-color-border);
+  padding: .7rem 0;
+  margin: 1.8rem 0 2.2rem;
+}
+p.mfc-figures strong {
+  color: var(--pst-color-text-base);
+  font-weight: 600;
+}
+
+/* "Start here" definition lists: a plain, scannable index */
+.bd-article dl.simple,
+.bd-article dl.field-list { margin-bottom: 1.6rem; }
+.bd-article dl.simple > dt {
+  font-weight: 600;
+  font-size: .82rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--pst-color-text-muted);
+  margin-bottom: .5rem;
+}
+.bd-article dl.simple > dd {
+  margin-left: 0;
+  padding-left: 0;
+  margin-bottom: .4rem;
+  line-height: 1.55;
+}
+.bd-article dl.simple > dd > p { margin-bottom: .35rem; }
+
+/* Figures in body text */
+.bd-article img.mfc-figure {
+  width: 100%;
+  height: auto;
+  border-radius: .25rem;
+  margin: .5rem 0 .3rem;
+}
+
+/* Give each group in the "Start here" index room to breathe */
+.bd-article dl.simple > dt:not(:first-child) { margin-top: 1.4rem; }

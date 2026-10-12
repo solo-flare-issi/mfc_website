@@ -8,7 +8,8 @@ past midnight. Instruments listed are those with data in SOAR under the
 Major Flare SOOP. For actual observed start and end times, per-instrument
 file counts and verified cadences, see the campaign detail pages.
 
-:::{note} Draft
+:::{admonition} Draft
+:class: note
 Coordinator lists and per-season narratives are drawn from the team's
 working documents and need a review pass. Flare columns will link
 through to the [flare catalogue](flares/index.md) once it is published.
